@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Foodie Palace | Menu</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+   
+<header class="header">
+
+   <section class="flex">
+
+      <a href="home.html" class="logo">Yum <i class="fas fa-utensils"></i> Food</a>
+
+      <nav class="navbar">
+         <a href="home.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="menu">Menu</a>
+         <a href="orders">Orders</a>
+         <a href="contact">Contact</a>
+      </nav>
+
+      <div class="icons">
+         <a href="/searching"><i class="fas fa-search"></i></a>
+         <a href="/cart"><i class="fas fa-shopping-cart"></i><span></span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+
+      <div class="profile">
+         <p class="name"></p>
+         <div class="flex">
+            <a href="/profile" class="btn">Profile</a>
+            <form action="logo" method="post">
+               <a href="/logout" class="btn">Logout</a>
+               </form>
+         </div>
+         <p class="account"><a href="login.html">Login</a> or <a href="register.html">Register</a></p>
+      </div>
+
+   </section>
+
+</header>
+
+<section class="product" id="product" >
+    
+    <h1 class="heading"><span>cat</span></h1>
+<div class="box-container">
+   <% orders.forEach(function(order) { %>
+   <form action="add-to-call" method="POST" class="box">
+  
+
+         <input type="hidden" name="fid" id="fid" value="<%=order.item_id%>">
+         <input type="submit"  id="submit" >
+   
+    
+    
+   </form>
+   <%})%>
+</div>    
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+   <section class="box-container">
+
+      <div class="box">
+         <img src="images/email-icon.png" alt="">
+         <h3>Our Email</h3>
+         <a href="mailto:rubhashree219@gmail.com">rubhashree219@gmail.com</a>
+         <a href="mailto:yogasriyoganathan@gmail.com">yogasriyoganathan@gmail.com</a>
+      </div>
+
+      <div class="box">
+         <img src="images/clock-icon.png" alt="">
+         <h3>Opening Hours</h3>
+         <p>11 am to 11 pm </p>
+      </div>
+
+      <div class="box">
+         <img src="images/map-icon.png" alt="">
+         <h3>Our Address</h3>
+         <a href="https://www.google.com/maps">Coimbatore-641110</a>
+      </div>
+
+      <div class="box">
+         <img src="images/phone-icon.png" alt="">
+         <h3>Our Number</h3>
+         <a href="tel:6383455807">6383455807</a>
+         <a href="tel:7558177035">7558177035</a>
+      </div>
+
+   </section>
+
+   <div class="credit">&copy; copyright @ 2022 by <span>Foodie Palace-Yum Food</span> | All rights reserved!</div>
+
+</footer>
+
+<div class="loader">
+   <img src="images/loader.gif" alt="">
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

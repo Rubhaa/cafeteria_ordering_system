@@ -1,0 +1,39 @@
+<%-include('../partial/header')-%>    
+<div class=" container">    
+       
+    <br>    
+    <%if(.length>0){%>    
+        <center>    
+        <div style="width:auto; border-style: solid;border-color: black;">    
+        <table class="table table-border table-hover">    
+            <thead class="bg-warning">    
+                <tr>    
+                        
+                    <th>    
+                        FOOD NAME    
+                    </th>    
+                </tr>    
+            </thead>    
+            <tbody>    
+                <%for(var i=0;i< data.length;i++){%>    
+                <tr>    
+                    <td>    
+                        <%=i+1%>    
+                    </td> 
+
+                    <td>    
+                     <%=data[i].item_name%>    
+                    </td>    
+                    <td>    
+                      <%=data[i].item_price%>    
+                    </td>    
+                </tr>    
+                <%}%>    
+            </tbody>    
+        </table>    
+    </div>    
+    </center>    
+    <%}%>    
+             
+    </div>    
+<%-include('../partial/footer')-%>  

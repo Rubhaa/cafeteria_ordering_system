@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Foodie Palace | Checkout</title>
+  
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+
+</head>
+<body>
+   
+<header class="header">
+
+   <section class="flex">
+
+      <a href="home.html" class="logo">Yum <i class="fas fa-utensils"></i> Food</a>
+      <nav class="navbar">
+         <a href="home.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="menu">Menu</a>
+         <a href="orders">Orders</a>
+         <a href="contact">Contact</a>
+      </nav>
+
+      <div class="icons">
+         <a href="/searching"><i class="fas fa-search"></i></a>
+         <a href="/cart"><i class="fas fa-shopping-cart"></i><span></span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+
+      <div class="profile">
+         <p class="name"></p>
+         <div class="flex">
+            <a href="/profile" class="btn">Profile</a>
+            <form action="logo" method="post">
+               <a href="/logout" class="btn">Logout</a>
+               </form>
+         </div>
+         <p class="account"><a href="login.html">Login</a> or <a href="register.html">Register</a></p>
+      </div>
+
+   </section>
+
+</header>
+
+<div class="heading">
+   <h3>Checkout</h3>
+   <p><a href="home.html">Home </a> <span> / Checkout</span></p>
+</div>
+
+<section class="checkout">
+
+   <h1 class="title">Order Summary</h1>
+
+   <form action="payment" method="post">
+      <div class="cart-items">
+         <% for(var i=0;i<orders.length;i++)  {%>
+  
+         <h3>Cart Items</h3>
+         <p><span class="name"><%=orders.item_name%></span><span class="price"><%=orders.total_price%></span></p>
+         <%}%>
+         
+         <p class="grand-total"><span class="name">Grand Total :</span><%=total%> <span class="price"></span></p>
+         <a href="/cart" class="btn">View Cart</a>
+      </div>
+      <div class="user-info">
+         <% customersList.forEach(function(customer)  {%>
+         <h3>Your Info</h3>
+         <p><i class="fas fa-user"></i> <span><%= customer.name %></span></p>
+         <p><i class="fas fa-phone"></i> <span><%=customer.mobile%></span></p>
+         <p><i class="fas fa-envelope"></i> <span><%=customer.c_mail%></span></p>
+         <a href="update_profile1" class="btn">Update Info</a>
+         <h3>Delivery Address</h3>
+         <p class="address"><i class="fas fa-map-marker-alt"></i> <span><%=customer.address%></span></p>
+         <a href="update_address1.html" class="btn">Update Address</a>
+         <%})%>
+         <div class="wrap">
+            <h3>Schedule your order</h3>
+            <p>
+               <label for="date">From</label>
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+             <input type="date" id="txtDate" min="2022-12-22" max="2023-01-22" name="txtDate" class="from-control" />
+               <script>$(function(){
+              var dtToday = new Date();
+
+   var month = dtToday.getMonth() + 1;
+   var day = dtToday.getDate();
+   var year = dtToday.getFullYear();
+   if(month < 10)
+       month = '0' + month.toString();
+   if(day < 10)
+       day = '0' + day.toString();
+
+   var txtDate= year + '-' + month + '-' + day;
+
+
+   $("#txtDate").datetimepicker({
+      minDate:0,
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true,
+            startDate: dateTime
+});
+});</script>
+            </p>
+            <p>
+               <label for="date">To</label>
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+               <input type="date" id="Date"min="2022-12-22" max="2023-01-22" name="Date" class="from-control"/>
+               <script>$(function(){
+                  var dtToday = new Date();
+               
+                  var month = dtToday.getMonth() + 1;
+                  var day = dtToday.getDate();
+            
+                  var year = dtToday.getFullYear();
+                  if(month < 10)
+                      month = '0' + month.toString();
+                  if(day < 10)
+                      day = '0' + day.toString();
+                      var Date= year + '-' + month + '-' + day;
+                  $("#Date").datetimepicker({
+                  format: 'yyyy-mm-dd hh:ii',
+                  autoclose: true,
+                  todayBtn: true,
+                  startDate: dateTime
+      });
+               });</script>
+            </p>
+            
+            <p>
+               
+               <legend>
+                   Time in 24hrs format: 
+                  <input type="time" id="time" name="time">
+              </legend>
+                  <h1>* Able to Collect your food one hour later from your place order time *</h1>
+              
+      </p>
+</div>
+         
+<form id="tableForm" action="/getJson" method="get">
+<select  class="selectpicker" data-style="btn-info" name="selectpicker" required>
+   <optgroup label="select Delivery Method">
+   <option name="" value="0" disabled selected>Select Delivery Method</option>
+   <option  value="Delivery" value="1">Delivery</option>
+   <option  value="Take away" value="2">Take Away</option>
+</optgroup>
+</select>
+
+<select  class="selectpicker1" data-style="btn-info" name="selectpicker1" required>
+   <optgroup label="select Payment Method">
+   <option name="" value="10" disabled selected>Select Payment Method</option>
+   <option  value="Credit/debit card" value="8">Credit/debit Card</option>
+</optgroup>
+</select>
+      
+      </div>
+      <input type="submit" value="PAY NOW" name="submit" class="btn" >
+   </form>
+</form>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+   <section class="box-container">
+
+      <div class="box">
+         <img src="images/email-icon.png" alt="">
+         <h3>Our Email</h3>
+         <a href="mailto:rubhashree219@gmail.com">rubhashree219@gmail.com</a>
+         <a href="mailto:yogasriyoganathan@gmail.com">yogasriyoganathan@gmail.com</a>
+      </div>
+
+      <div class="box">
+         <img src="images/clock-icon.png" alt="">
+         <h3>Opening Hours</h3>
+         <p>11 am to 11 pm </p>
+      </div>
+
+      <div class="box">
+         <img src="images/map-icon.png" alt="">
+         <h3>Our Address</h3>
+         <a href="https://www.google.com/maps">Coimbatore-641110</a>
+      </div>
+
+      <div class="box">
+         <img src="images/phone-icon.png" alt="">
+         <h3>Our Number</h3>
+         <a href="tel:6383455807">6383455807</a>
+         <a href="tel:7558177035">7558177035</a>
+      </div>
+
+   </section>
+
+   <div class="credit">&copy; copyright @ 2022 by <span>Foodie Palace-Yum Food</span> | All rights reserved!</div>
+
+</footer>
+
+<div class="loader">
+   <img src="images/loader.gif" alt="">
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

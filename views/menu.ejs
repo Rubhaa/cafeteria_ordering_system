@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Foodie Palace | Menu</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+   
+<header class="header">
+
+   <section class="flex">
+
+      <a href="home.html" class="logo">Yum <i class="fas fa-utensils"></i> Food</a>
+
+      <nav class="navbar">
+         <a href="home.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="menu">Menu</a>
+         <a href="orders">Orders</a>
+         <a href="contact">Contact</a>
+      </nav>
+
+      <div class="icons">
+         <a href="/searching"><i class="fas fa-search"></i></a>
+         <a href="/cart"><i class="fas fa-shopping-cart"></i><span></span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+
+      <div class="profile">
+         <p class="name"></p>
+         <div class="flex">
+            <a href="/profile" class="btn">Profile</a>
+            <form action="logo" method="post">
+               <a href="/logout" class="btn">Logout</a>
+               </form>
+         </div>
+         <p class="account"><a href="login.html">Login</a> or <a href="register.html">Register</a></p>
+      </div>
+
+   </section>
+
+</header>
+
+<div class="heading">
+   <h3>Our Menu</h3>
+   <p><a href="/desserts">desserts </a> <span> / Menu</span></p>
+   
+</div>
+
+<section class="products">
+
+   <h1 class="title">Latest Dishes</h1>
+   <h1 class="title">Lunch</h1>
+
+   <div class="box-container">
+      <% items.forEach(function(image) { %>
+      <form action="cartadd" method="post" class="box">
+
+
+       <input type="text" class="icon-rtl">
+       
+
+         
+         <input type="submit" class="fa-solid fa-cart-circle-plus" value="cart" id="submit" onClick="addcart()" ></input>
+         <script>
+            function addcart(){
+               alert('Added to cart')
+            }
+         </script>
+      
+         <img src="data:image/<%=image.img.contentType%>;base64,
+         <%=image.img.data.toString('base64')%>"alt="">
+         <a href="category" class="cat"></a>
+         <input type="hidden" name="id" id="id" value="<%=image.item_id%>">
+         <div class="name1"><%= image.item_type %></div>
+         <div class="name"><%= image.item_name %></div>
+         <input type="hidden" name="name" id="name" value="<%=image.item_name%>">
+         <div class="flex">
+            <div class="price"><span>Rs.</span><%= image.price %><span>/-</span></div>
+            <input type="hidden" name="price" id="price" value="<%=image.price%>">
+            <div class="name"><%= image.desc %></div>
+         
+            <input type="number" name="qty" id="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;">
+            
+           
+         </div>
+        
+      </form>
+      <% }) %>
+   </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+   <section class="box-container">
+
+      <div class="box">
+         <img src="images/email-icon.png" alt="">
+         <h3>Our Email</h3>
+         <a href="mailto:rubhashree219@gmail.com">rubhashree219@gmail.com</a>
+         <a href="mailto:yogasriyoganathan@gmail.com">yogasriyoganathan@gmail.com</a>
+      </div>
+
+      <div class="box">
+         <img src="images/clock-icon.png" alt="">
+         <h3>Opening Hours</h3>
+         <p>11 am to 11 pm </p>
+      </div>
+
+      <div class="box">
+         <img src="images/map-icon.png" alt="">
+         <h3>Our Address</h3>
+         <a href="https://www.google.com/maps">Coimbatore-641110</a>
+      </div>
+
+      <div class="box">
+         <img src="images/phone-icon.png" alt="">
+         <h3>Our Number</h3>
+         <a href="tel:6383455807">6383455807</a>
+         <a href="tel:7558177035">7558177035</a>
+      </div>
+
+   </section>
+
+   <div class="credit">&copy; copyright @ 2022 by <span>Foodie Palace-Yum Food</span> | All rights reserved!</div>
+
+</footer>
+
+<div class="loader">
+   <img src="images/loader.gif" alt="">
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
